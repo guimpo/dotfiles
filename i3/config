@@ -23,12 +23,12 @@ set $right l
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 8
+#font pango:System San Francisco Display 8
 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 
 # Before i3 v4.8, we used to recommend this one as the default:
@@ -306,13 +306,13 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always --no-startup-id /home/paulo/.config/polybar/launch.sh
 
 # Nitrogen
-exec_always nitrogen --restore 
+#exec_always nitrogen --restore 
 
 # Network Manager
 #exec_always nm-applet
 
 # Power Manager Tray
-exec_always xfce4-power-manager
+#exec_always xfce4-power-manager
 
 # Multiscreen
 #exec_always ~/.screenlayout/dual-display-config.sh
@@ -324,4 +324,4 @@ exec_always compton
 #exec_always pasystray
 
 # Touchpad
-bindsym XF86TouchpadToggle exec ~/.i3/touchpad_toggle.sh
+bindsym XF86TouchpadToggle exec ~/.config/i3/touchpad_toggle.sh
