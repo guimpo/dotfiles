@@ -278,10 +278,10 @@ mode "resize" {
 
 # window colors
 #                       border              background         text                 indicator               child_boarder
-client.focused          #16A085             #16A085            #80FFF9              #FDF6E3
-client.focused_inactive #434745             #434745            #16A085              #454948
-client.unfocused        #434745             #434745            #16A085              #454948
-client.urgent           #CB4B16             #FDF6E3            #16A085              #268BD2
+client.focused          #FAC863             #FAC863            #000000              #FDF6E3
+client.focused_inactive #434745             #434745            #CB4B16              #454948
+client.unfocused        #434745             #434745            #FAC863              #454948
+client.urgent           #CB4B16             #FDF6E3            #FAC863              #268BD2
 client.placeholder      #000000             #0c0c0c            #ffffff              #000000                 #0c0c0c
 
 
