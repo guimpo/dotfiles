@@ -1,0 +1,2 @@
+Xresourses
+Rofi colors
