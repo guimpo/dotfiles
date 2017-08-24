@@ -191,7 +191,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open specific applications in floating mode
 #for_window [title="alsamixer"] floating enable border pixel 1
-#for_window [class="Calamares"] floating enable border normal
 #for_window [class="Clipgrab"] floating enable
 #for_window [title="File Transfer*"] floating enable
 #for_window [class="Galculator"] floating enable border pixel 1
@@ -205,7 +204,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 #for_window [class="Nitrogen"] floating enable sticky enable border normal
 #for_window [class="Oblogout"] fullscreen enable
 #for_window [class="octopi"] floating enable
-#for_window [class="Pamac-manager"] floating enable
 #for_window [class="Pavucontrol"] floating enable
 #for_window [class="qt5ct"] floating enable sticky enable border normal
 #for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
@@ -313,10 +311,10 @@ exec_always --no-startup-id /home/paulo/.config/polybar/launch.sh
 #exec_always nitrogen --restore 
 
 # Network Manager
-#exec_always nm-applet
+exec_always nm-applet
 
 # Power Manager Tray
-#exec_always xfce4-power-manager
+exec_always xfce4-power-manager
 
 # Multiscreen
 #exec_always ~/.screenlayout/dual-display-config.sh
