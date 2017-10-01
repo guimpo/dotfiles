@@ -328,3 +328,6 @@ exec_always compton
 
 # Touchpad
 bindsym XF86TouchpadToggle exec ~/.config/i3/touchpad_toggle.sh
+
+# Dropbox
+exec_always dropbox start
