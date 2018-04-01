@@ -41,6 +41,11 @@ markup=none
 #interval=once
 #signal=10
 
+# Focused window
+#[focused window]
+#command=/home/paulo_i3/.config/i3blocks/title.sh
+#interval=1
+
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
@@ -49,11 +54,11 @@ label=MEM
 separator=false
 interval=30
 
-#[memory]
-#label=SWAP
-#instance=swap
-#separator=false
-#interval=30
+[memory]
+label=SWAP
+instance=swap
+separator=false
+interval=30
 
 # Disk usage
 #
@@ -61,9 +66,9 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=⛁
-#instance=/mnt/data
-interval=once
+label=DISK
+instance=/
+interval=300
 
 # Network interface monitoring
 #
@@ -75,14 +80,14 @@ interval=once
 #interval=10
 #separator=false
 
-[wifi]
+#[wifi]
 #instance=wlp3s0
-interval=10
-separator=false
+#interval=10
+#separator=false
 
 [bandwidth]
 #instance=eth0
-interval=5
+#interval=5
 
 # CPU usage
 #
@@ -109,13 +114,9 @@ min_width=CPU: 100.00%
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d'
-label=
-interval=once
-[time]
-command=date '+%H:%M'
-label=
+command=date '+%Y-%m-%d  %H:%M'
 interval=60
+
 
 # Generic media player support
 #
@@ -130,6 +131,7 @@ interval=60
 #
 # Support multiple VPN, with colors.
 #[openvpn]
+#interval=20
 
 # Temperature
 #
@@ -146,12 +148,12 @@ interval=60
 #
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 # bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-#[keyindicator]
-#instance=CAPS
-#interval=once
-#signal=11
+[keyindicator]
+instance=CAPS
+interval=once
+signal=11
 
-#[keyindicator]
-#instance=NUM
-#interval=once
-#signal=11
+[keyindicator]
+instance=NUM
+interval=once
+signal=11
