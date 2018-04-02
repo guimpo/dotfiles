@@ -26,38 +26,39 @@
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
-markup=none
+markup=pango
 
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-#[volume]
-#label=VOL
-#label=♪
-#instance=Master
-#instance=PCM
+#[colors]
+#command=echo "<span color='red'bgcolor='white'>yohoho</span>"
+#markup=pango
 #interval=once
-#signal=10
 
-# Focused window
-#[focused window]
-#command=/home/paulo_i3/.config/i3blocks/title.sh
-#interval=1
+
+[window title]
+command=xdotool getactivewindow getwindowname
+interval=3
+color=#A6D1FA
+align=center
 
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
+[memoryDecorate]
+command= echo "<span color='#23d5e9'font_desc='Monospace'></span><span color='black' bgcolor='#23d5e9'> MEM </span>"
+markup=pango
+interval=once
+separator=false
+
 [memory]
-label=MEM
+markup=pango
+color=#23d5e9
 separator=false
 interval=30
 
 [memory]
 label=SWAP
 instance=swap
-separator=false
+separator=true
 interval=30
 
 # Disk usage
@@ -70,25 +71,6 @@ label=DISK
 instance=/
 interval=300
 
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-#[iface]
-#instance=wlan0
-#color=#00FF00
-#interval=10
-#separator=false
-
-#[wifi]
-#instance=wlp3s0
-#interval=10
-#separator=false
-
-[bandwidth]
-#instance=eth0
-#interval=5
-
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
@@ -99,24 +81,18 @@ interval=10
 min_width=CPU: 100.00%
 #separator=false
 
-#[load_average]
-#interval=10
-
-# Battery indicator
-#
-# The battery instance defaults to 0.
-#[battery]
-#label=BAT
-#label=⚡
-#instance=1
-#interval=30
 
 # Date Time
 #
-[time]
-command=date '+%Y-%m-%d  %H:%M'
+[Date]
+command=date '+%d-%m-%Y'
 interval=60
 
+# Time
+#
+[Time]
+command=date  '+%H:%M'
+interval=60
 
 # Generic media player support
 #
@@ -127,11 +103,6 @@ interval=60
 #interval=5
 #signal=10
 
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-#[openvpn]
-#interval=20
 
 # Temperature
 #
