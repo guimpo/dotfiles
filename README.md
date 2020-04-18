@@ -1,2 +1,2 @@
-i3 config files
+i3blocks config files
 change branch
