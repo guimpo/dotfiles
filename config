@@ -54,11 +54,27 @@ bindsym $mod+n exec google-chrome
 bindsym $mod+q kill
 
 # rofi
-bindsym $mod+d exec rofi -show run -lines 8 -eh 2 -width 100 -padding 50 -opacity "85" -bw 0 -bc "#2B2C2B" -bg "#2B2C2B" -fg "#11FFFF" -hlbg "#000000" -hlfg "#FFF7FB" -font "System San Francisco Display 18"
+bindsym $mod+d exec rofi -show run
 
-# thunar
-bindsym $mod+m exec pcmanfm 
+# keyboard layout
+# blitzwolf-bw-kb-1
+# Change keyboard to mac mode fn + A/S
+# Run: xmodmap -pke > defaults
+# Change maps alt right in modmap.file
+# Use xev to discover keycode
+# Save
+#exec_always --no-startup-id setxkbmap -layout us -variant intl
+#exec_always --no-startup-id  xmodmap -v /home/paulo/.config/i3/modmap.file  
 
+# background
+bindsym $mod+u exec ~/.config/i3/dual-display.sh
+#exec_always feh --bg-max ~/Pictures/observable-universe.jpg
+
+# pcmanfm 
+# bindsym $mod+m exec pcmanfm 
+
+# nautilus
+bindsym $mod+m exec nautilus
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -67,7 +83,6 @@ bindsym $mod+m exec pcmanfm
 
 # change focus
 bindsym $mod+Tab    focus right
-bindcode $mod+49    focus left 
 bindsym $mod+$left  focus left
 bindsym $mod+$down  focus down
 bindsym $mod+$up    focus up
@@ -95,7 +110,7 @@ bindsym $mod+Shift+Right move right
 workspace_auto_back_and_forth yes
 
 # split in horizontal orientation
-bindsym $mod+ccedilla split h; exec notify-send 'tile horizontally'
+bindsym $mod+o split h; exec notify-send 'tile horizontally'
 
 # split in vertical orientation
 bindsym $mod+v split v;exec notify-send 'tile vertically'
@@ -116,6 +131,9 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# Keyboard Layout
+exec --no-startup-id "setxkbmap -model pc105 -layout br,us -option grp:alt_shift_toggle"
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -188,10 +206,10 @@ for_window [title="Save File"]          floating enable
 for_window [class="File-roller"] floating enable sticky enable border normal; resize set 640 480;
 #for_window [title="alsamixer"] floating enable border pixel 1
 #for_window [class="Clipgrab"] floating enable
-#for_window [title="File Transfer*"] floating enable
+for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
-#for_window [class="GParted"] floating enable border normal
-#for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
 #for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 #for_window [title="MuseScore: Play Panel"] floating enable
@@ -199,21 +217,22 @@ for_window [class="Lxappearance"] floating enable sticky enable border normal
 #for_window [class="Oblogout"] fullscreen enable
 #for_window [class="octopi"] floating enable
 #for_window [class="Pavucontrol"] floating enable
-#for_window [class="qt5ct"] floating enable sticky enable border normal
-#for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 #for_window [class="Simple-scan"] floating enable border normal
 #for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 #for_window [class="Thus"] floating enable border normal
 #for_window [class="Timeset-gui"] floating enable border normal
-#for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
 #for_window [class="Xfburn"] floating enable
 #for_window [window_role="gimp-image-window"] floating disable
-#for_window [window_role="gimp_dock"] floating disable
-#for_window [window_role="gimp_toolbox"] floating disable
-#for_window [class="VirtualBox Machine"] floating enable border normal
+for_window [window_role="gimp_dock"] floating disable
+for_window [window_role="gimp_toolbox"] floating disable
+for_window [class="VirtualBox Machine"] floating enable border normal
 for_window [title="^Android Emulator -"] floating enable
 for_window [class="XCalc"] floating enable border normal
+for_window [title="Tip of the Day "] floating enable border normal, move position center
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -279,6 +298,26 @@ client.placeholder      #000000             #0c0c0c            #ffffff          
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 
+###############################################
+# sudo apt install light                      #
+# sudo chmod +s /usr/bin/light                #
+#                                             #
+# increase screen brightness                  #
+bindsym XF86MonBrightnessUp exec light -A 1   #
+# decrease screen brightness                  #
+bindsym XF86MonBrightnessDown exec light -U 1 #
+###############################################
+
+##################################################################################
+# increase sound volume                                                          #
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 1 +5% #
+#                                                                                #
+# decrease sound volume                                                          #
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 1 -5% #
+# mute sound                                                                     #
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle          #
+##################################################################################
+
 
 # Startup applications
 
@@ -286,34 +325,30 @@ client.placeholder      #000000             #0c0c0c            #ffffff          
 exec --no-startup-id nm-applet
 
 # Power Manager Tray
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 
 # Sound controll
-exec --no-startup-id xfce4-volumed
+# exec --no-startup-id xfce4-volumed
 
 # Touchpad
 bindsym XF86TouchpadToggle exec ~/.config/i3/touchpad_toggle.sh
 
 # Dropbox
-exec_always --no-startup-id dropbox start
+# exec_always --no-startup-id dropbox start
 
 # Megasync
-exec_always --no-startup-id megasync
-
-# Border style for new windows
-#new_window pixel 4
-#new_float pixel 4
-#hide_edge_borders horizontal
+# exec_always --no-startup-id megasync
 
 # bar
 bar {
+	mode hide
 	font pango: Ubuntu bold 10	
 	status_command i3blocks
-	tray_output primary
+#	tray_output primary
 	position top 
 	colors {
             background #000000
-	         statusline #ffffff
+	        statusline #ffffff
             separator #666666
 
             focused_workspace  #23d5e9 #285577 #23d5e9
